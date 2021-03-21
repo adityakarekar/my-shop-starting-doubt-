@@ -1,4 +1,4 @@
-import {Carousel} from './react-bootstrap';
+import {Carousel} from 'react-bootstrap';
 import Img1 from '../images/1.jpg';
 import Img2 from '../images/2.jpg';
 import Img3 from '../images/3.jpg';
@@ -10,6 +10,7 @@ function Img_slider()
            <Carousel>
   <Carousel.Item>
     <img
+    height="600"
       className="d-block w-100"
       src={Img1}
       alt="First slide"
@@ -21,6 +22,7 @@ function Img_slider()
   </Carousel.Item>
   <Carousel.Item>
     <img
+    height="600"
       className="d-block w-100"
       src={Img2}
       alt="Second slide"
@@ -33,6 +35,7 @@ function Img_slider()
   </Carousel.Item>
   <Carousel.Item>
     <img
+    height="600"
       className="d-block w-100"
       src={Img3}
       alt="Third slide"

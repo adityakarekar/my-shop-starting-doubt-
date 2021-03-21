@@ -7,6 +7,7 @@ import Home from './screens/Home.js';
 import Login from './screens/Login.js';
 import Register from './screens/Register.js';
 import Notfound from './screens/Notfound.js';
+import ProductInfo from './screens/ProductInfo.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter,Switch,Route,Link} from "react-router-dom";
 
@@ -17,6 +18,7 @@ const routing=(
            <Route exact path="/"component={Home}/>
            <Route exact path="/login"component={Login} />
            <Route exact path="/register"component={Register} />
+           <Route exact path="/productInfo"component={ProductInfo} />
            <Route component={Notfound} />
          </Switch>
 
