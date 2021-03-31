@@ -12,7 +12,7 @@ function Home()
 <div >
             <Navbar_component />
             <Img_slider />
-            <h1 className=" myheading text-center">My products</h1>
+            <h1 className=" myheading text-center">My products </h1>
     <div className="row">
 
          <div classNAme="col-lg-3">

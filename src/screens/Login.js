@@ -1,22 +1,20 @@
 import Navbar_component from '../components/Navbar_component';
 import {Form,Button} from 'react-bootstrap';
+import {Link} from "react-router-dom";
 
 function Login()
 {
     return(
-        <div>
-            <Navbar_component />
-            <h1 class="text-center text-success">Login Screen</h1>
+<div>
+        <Navbar_component />
+      <div className="row">
 
-            
-
-<Form>
-           <Form.Group>
-             <Form.Label> Name<span className='text-danger'> * </span>  </Form.Label>
-             <Form.Control  required type="text" placeholder="Enter Your Full Name" />
-
-           </Form.Group>
-
+             <div className="col-lg-4"></div>
+             
+        <div className="col-lg-4">
+        <h1 className="text-center text-success">Login Screen </h1>
+            <Form>
+           
            <Form.Group>
              <Form.Label> Email<span className='text-danger'>  *</span> </Form.Label>
              <Form.Control required type="email" placeholder="Enter Your Email" />
@@ -28,18 +26,31 @@ function Login()
              <Form.Control type="password" placeholder="Enter Your Password" />
 
            </Form.Group>
- 
+
            
- 
-  <Button variant="success" type="submit">
-    Submit
-  </Button>
-</Form>
+             <Button variant="success" className="font-center">
+              Login
+            </Button> 
+            <Form.Group>
+             <h4 className="text-center">OR</h4>
+           </Form.Group>
+           
+           <Form.Group>
+             <Button variant="outline-primary">
+             <Link to ="/register"> Register</Link>
+            </Button>
+           </Form.Group>
+        
 
-
-
+            </Form>
 
         </div>
+           
+              <div className="col-lg-4"></div>
+
+      </div>
+
+</div>
     );
 }
 export default Login;

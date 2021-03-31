@@ -8,4 +8,61 @@
 .myCart
 {
   margin: 20px;
+
+}
+
+.productinfoDiv
+{
+  height: 700px;
+}
+.productImg
+{
+  width:50%;
+  height: 400px;
+  margin-top: 50px;
+}
+.secondDivProduct
+{
+  padding: 50px;
+}
+.avoffer
+{
+  padding:20px;
+}
+.AddtoCart
+{
+  background-color: #FF9F00;
+  border-radius: 50px;
+  color: white;
+  border: 1px solid black;
+  font-weight: bold;
+  width: 200px;
+  padding: 10px;
+}
+
+.BuyNow
+{
+  background-color:#FB641B;
+  border-radius: 50px;
+  color: white;
+  border: 1px solid black;
+  font-weight: bold;
+  width: 200px;
+  padding: 10px;
+}
+.placeOrderBtn
+{
+  margin: 40px;
+}
+
+
+.RegisterBtn
+{
+  background-color: green;
+  border-radius: 50px;
+  color: white;
+  border: 1px solid black;
+  font-weight: bold;
+  width: 200px;
+  padding: 10px;
 }
