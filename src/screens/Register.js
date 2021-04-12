@@ -1,150 +1,146 @@
 import React,{useState} from 'react';
 import Navbar_component from '../components/Navbar_component';
-import {Form} from 'react-bootstrap';
 import {Function_registerAPI} from './API';
-
-
-
+import {BrowserRouter,Switch,Route,Link} from "react-router-dom";
 
 function Register()
 {
-
-  const [values,setValues]= useState(
-   {
-      firstname:'xyz',
-      lastname:'k',
-      email:'xyz@gmail.com',
-      address:'Pune',
-      password:'adi123',
-      error:false,
-      success:false
-
-
-    }
-     
-  );
-
-      const{firstname,lastname,email,address,password,error,success}=values;
-
-      const HandleChange=inputtype_name=>event=>
-      {
-        setValues({...values,error:false,[inputtype_name]:event.target.value});
-         //...values =update data of array 'value';
-        //...inputtype_name=email,firstname,lastname,etc;                                                                      //...inputtype_name=email,firstname,lastname,etc;
-      };
-           
-      const [datafromBackend, updatedatafromBackendadd] = useState();
-
-     const onSubmit = event =>
-      {
-
-       event.preventDefault();
-       
-       setValues({ ...values, error: false });
-
-       Function_registerAPI({ firstname,lastname,email,address,password })
-         .then(data => 
-            {
-           if (data.error) 
-           {
-             setValues({ ...values, error: data.error, success: false });
-           } 
-           else 
-           {
-            
-            setValues({ ...values,  success: true });
-               
-              updatedatafromBackendadd(data);
-                    console.log(data);
-                    setValues(
-                      {
-                    ...values,
-                    firstname: "",
-                    lastname: "",
-                    email: "",
-                    address: "",
-                    password: "",
-                    error: false,
-                    success: true
-                    }
-                          );
-           }
-         })
-       console.log("hi")
-     };   
-
-
-
-    return(
-      <div>
-      <Navbar_component />
-    <div className="row">
-
-           <div className="col-lg-4"></div>
-           
-      <div className="col-lg-4">
-      <h1 className="text-center text-danger">Registration Screen </h1>
-          <Form>
-         
-         <Form.Group>
-           <Form.Label>First Name<span className='text-danger'>  *</span> </Form.Label>
-           <Form.Control required type="text" onChange={HandleChange("firstname")} placeholder="Enter Your First Name" />
-
-         </Form.Group>
-         <Form.Group>
-           <Form.Label>Last Name<span className='text-danger'>  *</span> </Form.Label>
-           <Form.Control required type="text" onChange={HandleChange("lastname")} placeholder="Enter Your Last Name" />
-
-         </Form.Group>
-
-         <Form.Group>
-           <Form.Label> Email <span className='text-danger'>  *</span></Form.Label>
-           <Form.Control type="email" onChange={HandleChange("email")} placeholder="Enter Your email id" />
-
-         </Form.Group>
-         
-         <Form.Group>
-           <Form.Label> Address <span className='text-danger'>  *</span></Form.Label>
-           <Form.Control type="text" onChange={HandleChange("address")} placeholder="Enter Your Address" />
-          </Form.Group>
-         <Form.Group>
-           <Form.Label> Password <span className='text-danger'>  *</span></Form.Label>
-           <Form.Control type="password" onChange={HandleChange("password")} placeholder="Enter Your Password" />
-               
-           
-         </Form.Group>
-         
-         <Form.Group>
-           <button onClick={onSubmit} className="RegisterBtn font-center">Register</button>
-         </Form.Group>
-
-
-
-         
-
-      </Form>
-                     
-      </div>
-         
-            <div className="col-lg-4"></div>
-         <ul>
-           <li>First Name:{firstname}</li> 
-           <li>Last Name:{lastname}</li> 
-           <li>Email:{email}</li> 
-           <li>Address:{address}</li> 
-           <li>Password:{password}</li> 
-         </ul>
-        
-
-
-          <p>
-            Data From Backend :{JSON.stringify(updatedatafromBackendadd)}
-
-          </p>
-
-    </div>
-
-</div>
-    )
+   //array use state 
+   const [myvalues,setValues] = useState({
+    firstname:'',
+    lastname:'',
+    email:'',
+    address:'',
+    password:'',
+    error:false,
+    success:false
 }
+);
+
+
+const [datafromBackend, updatedatafromBackendadd] = useState();
+
+
+
+const { firstname,lastname,email,address, password, error, success } = myvalues;  
+
+
+
+const handleChange = inputtype_name => e => 
+{
+setValues( { ...myvalues,[inputtype_name]: e.target.value } );
+};
+
+
+const onSubmit = event =>
+{
+  console.log("hello")
+event.preventDefault();
+
+setValues({ ...myvalues, error: false });
+
+Function_registerAPI({ firstname,lastname, email, address, password })
+ .then(data => 
+    {
+   if (data.error) 
+   {
+     setValues({ ...myvalues, error: data.error, success: false });
+   } 
+   else 
+   {
+    
+    setValues({ ...myvalues,  success: true });
+       
+      updatedatafromBackendadd(data);
+            console.log(data);
+            setValues({
+            ...myvalues,
+            firstname: "",
+            lasttname: "",
+            email: "",
+            address: "",
+            password: "",
+            error: false,
+            success: true
+            });
+   }
+ })
+};
+  return(
+       <div>
+         <Navbar_component />
+         <div className="row">
+
+                    <div className="col-lg-4"></div>
+                    <div className="col-lg-4">
+
+                                <h1 className="text-danger"> Registration Screen</h1>
+
+                                <div className="form-group">
+                                            <label htmlFor="">First Name : </label>
+                                            <input type="text" value={firstname}  onChange={handleChange("firstname")}  required placeholder="Enter User First Name"
+                                             className="form-control" />
+
+                                </div>
+
+                                <div className="form-group">
+                                            <label htmlFor=""> Last Name : </label>
+                                            <input type="text" value={lastname}  onChange={handleChange("lastname")}  required placeholder="Enter User Last Name"
+                                             className="form-control" />
+
+                                </div>
+
+                                <div className="form-group">
+                                            <label htmlFor="">User Email : </label>
+                                            <input type="email" value={email} onChange={handleChange("email")}   required placeholder="Enter User Email"
+                                             className="form-control"/>
+
+                                <div className="form-group">
+                                            <label htmlFor="">Address : </label>
+                                            <input type="text" value={address}  onChange={handleChange("address")}  required placeholder="Enter Address"
+                                             className="form-control" />
+
+                                </div>
+
+                                </div>
+                                <div className="form-group">
+                                            <label htmlFor="">User Password : </label>
+                                            <input type="password" value={password}   onChange={handleChange("password")}     required placeholder="Enter User Password"
+                                             className="form-control"/>
+
+                                </div>
+                                <div className="form-group">
+
+                                            <button onClick={onSubmit}   className="btn btn-danger mx-auto d-block">Register</button>
+
+                                </div>
+
+                    </div>
+                    <div className="col-lg-4"></div>
+
+                    <ul>
+                        <li>First Name : {myvalues.firstname}</li>
+                        <li>Last Name : {myvalues.lastname}</li>
+                        <li>User Email : {myvalues.email}</li>
+                        <li>User Address : {myvalues.address}</li>
+                        <li>User password : {myvalues.password}</li>
+                        <li>User success : {myvalues.success}</li>
+                    </ul>
+                    <br />
+                   
+
+                    <p>
+                        Data From Backend :   {JSON.stringify(updatedatafromBackendadd)}
+
+                    </p>
+
+            </div>
+          
+       </div>
+
+  );
+}
+ 
 export default Register;
+
+
